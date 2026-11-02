@@ -1,0 +1,7 @@
+# Xbox Wireless Controller over Bluetooth on Linux.
+# The hidraw node created for a Bluetooth-connected Xbox controller is root-only,
+# which breaks Steam Input rumble and SDL HIDAPI. Grant the logged-in user access.
+#
+# Applies to Xbox One / Series controllers (USB vendor 045E) on the Bluetooth bus (0005).
+# Install as /etc/udev/rules.d/72-xbox-bluetooth-hidraw.rules
+SUBSYSTEM=="hidraw", KERNELS=="*0005:045E:*", TAG+="uaccess", MODE="0660"
